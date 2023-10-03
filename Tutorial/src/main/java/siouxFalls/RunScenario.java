@@ -33,13 +33,13 @@ public class RunScenario {
 		
 		
 		Controler controler = new Controler(scenario);
-		controler.addOverridingModule(new AbstractModule(){
-			@Override
-			public void install() {
-				this.addEventHandlerBinding().to(LinkPCUCountEventHandler.class);
-				//this.bind(LinkPCUCountEventHandler.class).toInstance(new LinkPCUCountEventHandler());
-			}
-		});
+//		controler.addOverridingModule(new AbstractModule(){
+//			@Override
+//			public void install() {
+//				this.addEventHandlerBinding().to(LinkPCUCountEventHandler.class);
+//				//this.bind(LinkPCUCountEventHandler.class).toInstance(new LinkPCUCountEventHandler());
+//			}
+//		});
 		controler.run();
 	}
 }
