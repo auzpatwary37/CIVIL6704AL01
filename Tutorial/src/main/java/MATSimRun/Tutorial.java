@@ -1,17 +1,14 @@
 package MATSimRun;
 
-import org.matsim.api.core.v01.Scenario;
 import org.matsim.core.config.Config;
 import org.matsim.core.config.ConfigUtils;
+import org.matsim.core.config.ConfigWriter;
 import org.matsim.core.config.groups.PlanCalcScoreConfigGroup.ActivityParams;
 import org.matsim.core.config.groups.StrategyConfigGroup.StrategySettings;
-import org.matsim.core.controler.Controler;
-import org.matsim.core.controler.OutputDirectoryHierarchy;
 import org.matsim.core.controler.OutputDirectoryHierarchy.OverwriteFileSetting;
 import org.matsim.core.replanning.strategies.DefaultPlanStrategiesModule.DefaultPlansRemover;
 import org.matsim.core.replanning.strategies.DefaultPlanStrategiesModule.DefaultSelector;
 import org.matsim.core.replanning.strategies.DefaultPlanStrategiesModule.DefaultStrategy;
-import org.matsim.core.scenario.ScenarioUtils;
 
 public class Tutorial {
 	public static void main(String[] args) {
@@ -58,9 +55,6 @@ public class Tutorial {
 		config.controler().setOutputDirectory("output");
 		config.controler().setOverwriteFileSetting(OverwriteFileSetting.deleteDirectoryIfExists);
 		
-		Scenario scenario = ScenarioUtils.loadScenario(config);
-		
-		Controler controler = new Controler(scenario);
-		controler.run();
+		new ConfigWriter(config).write("config.xml");
 	}
 }
