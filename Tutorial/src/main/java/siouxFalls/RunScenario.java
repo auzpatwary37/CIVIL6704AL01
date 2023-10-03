@@ -26,17 +26,18 @@ public class RunScenario {
 		config.qsim().setEndTime(27*3600);
 		
 		config.controler().setFirstIteration(0);
-		config.controler().setFirstIteration(250);
+		config.controler().setLastIteration(250);
 		config.strategy().setFractionOfIterationsToDisableInnovation(.8);
 		
 		Scenario scenario = ScenarioUtils.loadScenario(config);
+		
 		
 		Controler controler = new Controler(scenario);
 		controler.addOverridingModule(new AbstractModule(){
 			@Override
 			public void install() {
 				this.addEventHandlerBinding().to(LinkPCUCountEventHandler.class);
-				this.bind(LinkPCUCountEventHandler.class).toInstance(new LinkPCUCountEventHandler());
+				//this.bind(LinkPCUCountEventHandler.class).toInstance(new LinkPCUCountEventHandler());
 			}
 		});
 		controler.run();

@@ -113,6 +113,7 @@ public class PopulationAndNetworkGenerator {
 			Plan plan = popFac.createPlan();
 			Activity act1 = popFac.createActivityFromCoord("home", new Coord(0,510));
 			act1.setEndTime(8*3600);
+			
 			Leg leg = popFac.createLeg("car");
 			Activity act2 = popFac.createActivityFromCoord("work", new Coord(1520,510));
 			plan.addActivity(act1);
@@ -136,6 +137,9 @@ public class PopulationAndNetworkGenerator {
 			person.addPlan(plan);
 			population.addPerson(person);
 		}
+		
+		
+		
 		new PopulationWriter(population).write("population.xml");
 	}
 }
